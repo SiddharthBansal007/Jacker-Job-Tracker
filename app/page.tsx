@@ -50,49 +50,6 @@ const emptyJob: Omit<Job, 'id'> = {
   referral: '',
 };
 
-const sampleJobs: Job[] = [
-  {
-    id: 'sample-figma',
-    companyName: 'Figma',
-    role: 'Product Designer',
-    appliedOn: '2026-08-24',
-    link: 'https://www.figma.com/careers/',
-    lastFollowUp: '2026-08-26',
-    status: 'Interview',
-    referral: 'Aman Sharma',
-  },
-  {
-    id: 'sample-stripe',
-    companyName: 'Stripe',
-    role: 'Software Engineer',
-    appliedOn: '2026-08-22',
-    link: 'https://stripe.com/jobs',
-    lastFollowUp: '2026-08-25',
-    status: 'Followed Up',
-    referral: '',
-  },
-  {
-    id: 'sample-notion',
-    companyName: 'Notion',
-    role: 'Product Analyst',
-    appliedOn: '2026-08-20',
-    link: 'https://www.notion.so/careers',
-    lastFollowUp: '',
-    status: 'Applied',
-    referral: 'Priya Mehta',
-  },
-  {
-    id: 'sample-rippling',
-    companyName: 'Rippling',
-    role: 'Frontend Engineer',
-    appliedOn: '2026-08-18',
-    link: 'https://www.rippling.com/careers',
-    lastFollowUp: '2026-08-21',
-    status: 'Rejected',
-    referral: '',
-  },
-];
-
 const statusRank: Record<JobStatus, number> = {
   Applied: 0,
   'Followed Up': 1,
@@ -125,10 +82,10 @@ export default function Home() {
         setJobs(normalizeJobs(JSON.parse(savedJobs) as Job[]));
       } catch {
         window.localStorage.removeItem(storageKey);
-        setJobs(normalizeJobs(sampleJobs));
+        setJobs([]);
       }
     } else {
-      setJobs(normalizeJobs(sampleJobs));
+      setJobs([]);
     }
 
     if (savedTheme === 'black' || savedTheme === 'white') {

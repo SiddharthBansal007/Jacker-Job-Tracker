@@ -67,4 +67,4 @@ npm run build
 
 ## Notes
 
-Sample data is included only to make the tracker easy to preview. Remove or replace it before using Jacker as your final personal tracker.
+Jacker starts empty in every new browser. Your entries appear only after you add them, and they remain local to that browser.

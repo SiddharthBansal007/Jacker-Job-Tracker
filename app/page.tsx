@@ -346,6 +346,30 @@ export default function Home() {
             <span>{jobs.length} saved</span>
           </div>
 
+          <div className="mobile-sort-controls" aria-label="Sort applications">
+            <button type="button" onClick={() => toggleSort('appliedOn')}>
+              Applied
+              <span
+                className={getSortIndicatorClass(sortConfig, 'appliedOn')}
+                aria-hidden="true"
+              />
+            </button>
+            <button type="button" onClick={() => toggleSort('lastFollowUp')}>
+              Follow Up
+              <span
+                className={getSortIndicatorClass(sortConfig, 'lastFollowUp')}
+                aria-hidden="true"
+              />
+            </button>
+            <button type="button" onClick={() => toggleSort('status')}>
+              Status
+              <span
+                className={getSortIndicatorClass(sortConfig, 'status')}
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+
           <div className="table-frame">
             <div className="overflow-x-auto">
               <table className="tracker-table">
@@ -452,6 +476,76 @@ export default function Home() {
                 </tbody>
               </table>
             </div>
+          </div>
+
+          <div className="mobile-job-list">
+            {sortedJobs.length ? (
+              sortedJobs.map((job) => (
+                <article className="mobile-job-card" key={job.id}>
+                  <div className="mobile-job-card-header">
+                    <div>
+                      <h3>{job.companyName}</h3>
+                      <p>{job.role || 'Role not added'}</p>
+                    </div>
+                    <span className="status-pill">{job.status}</span>
+                  </div>
+
+                  <dl className="mobile-job-details">
+                    <div>
+                      <dt>Applied</dt>
+                      <dd>{formatDate(job.appliedOn) || 'Not set'}</dd>
+                    </div>
+                    <div>
+                      <dt>Follow Up</dt>
+                      <dd>{formatDate(job.lastFollowUp) || 'Not set'}</dd>
+                    </div>
+                    <div>
+                      <dt>Link</dt>
+                      <dd>
+                        {job.link ? (
+                          <a href={job.link} target="_blank" rel="noreferrer">
+                            Open
+                          </a>
+                        ) : (
+                          'Not added'
+                        )}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>Referral</dt>
+                      <dd>
+                        {job.referral ? (
+                          <ReferralCell value={job.referral} />
+                        ) : (
+                          'Not added'
+                        )}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <div className="mobile-card-actions">
+                    <button
+                      className="table-action"
+                      type="button"
+                      onClick={() => startEditing(job)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="table-action"
+                      type="button"
+                      onClick={() => removeJob(job.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </article>
+              ))
+            ) : (
+              <div className="mobile-empty-state">
+                Add your first application above.
+              </div>
+            )}
           </div>
         </section>
       </section>

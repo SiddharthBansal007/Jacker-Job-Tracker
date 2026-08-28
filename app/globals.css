@@ -103,7 +103,7 @@ select {
 }
 
 .form-link {
-  grid-column: span 5;
+  grid-column: span 4;
 }
 
 .form-referral {
@@ -114,12 +114,7 @@ select {
   display: flex;
   align-items: end;
   gap: 0.625rem;
-  grid-column: span 3;
-}
-
-.sample-row {
-  display: flex;
-  grid-column: 1 / -1;
+  grid-column: span 2;
 }
 
 .field {

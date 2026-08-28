@@ -213,12 +213,6 @@ export default function Home() {
     setEditingId(null);
   }
 
-  function loadSampleData() {
-    setJobs(normalizeJobs(sampleJobs));
-    setEditingId(null);
-    setDraft(emptyJob);
-  }
-
   function toggleSort(field: SortField) {
     setSortConfig((current) =>
       current.field === field
@@ -386,15 +380,6 @@ export default function Home() {
             ) : null}
           </div>
 
-          <div className="sample-row">
-            <button
-              className="button-secondary"
-              type="button"
-              onClick={loadSampleData}
-            >
-              Load sample data
-            </button>
-          </div>
         </form>
 
         <section className="tracker-section">

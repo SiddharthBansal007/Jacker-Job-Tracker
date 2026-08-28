@@ -5,12 +5,23 @@
   --foreground: #000000;
 }
 
+html[data-theme='black'] {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+html[data-theme='white'] {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   background: var(--background);
+  color: var(--foreground);
 }
 
 body {

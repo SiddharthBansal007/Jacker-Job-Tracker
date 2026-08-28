@@ -104,6 +104,7 @@ export default function Home() {
   useEffect(() => {
     if (hasLoaded) {
       window.localStorage.setItem(themeStorageKey, theme);
+      document.documentElement.dataset.theme = theme;
     }
   }, [hasLoaded, theme]);
 
